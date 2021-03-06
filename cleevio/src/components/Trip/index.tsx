@@ -1,0 +1,1 @@
+export { BaseTrip } from './BaseTrip';
