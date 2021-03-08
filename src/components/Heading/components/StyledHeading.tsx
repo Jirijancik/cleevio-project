@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
-export const StyledCardWrapper = styled.div`
-display: grid;
-grid-auto-flow: row;
-width: min-content;
-justify-content: space-between;
-grid-gap: 22px;
+export const StyledHeading = styled.h1`
+
+width:100%;
+padding-top: 43px;
+padding-left: 40px;
+padding-bottom: 20px;
+margin-bottom: 32px;
+border-bottom: 2px solid black;
+
+
 `;
 
 //   top: ${props => px(getBadgeSpacing(props.buttonSize, props.withValue))};

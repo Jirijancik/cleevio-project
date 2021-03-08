@@ -1,7 +1,7 @@
 import React from 'react';
 import { select } from '@storybook/addon-knobs';
+import { FlagsName } from 'constants/FlagsEnum';
 import { Icon } from './Icon';
-import { FlagsName } from '../../constants/FlagsEnum';
 
 export const button = () => {
   const returnIconName = select('Icon Name', FlagsName, FlagsName.Czechia);

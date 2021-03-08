@@ -29,7 +29,7 @@ export const RowTrip: React.FC<IRowTripProps> = (props) => {
     company,
     flagName,
     adress,
-    date = new Date().toUTCString(),
+    date = new Date().toDateString(),
   } = props;
 
   return (

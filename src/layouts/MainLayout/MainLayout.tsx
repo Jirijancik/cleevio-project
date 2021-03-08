@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Heading } from 'components/Heading';
 import { StyledWrapper } from './components/StyledWrapper';
 import { StyledContent } from './components/StyledContent';
 import { Infobar } from '../../components/Infobar/Infobar';
@@ -32,6 +33,7 @@ export const MainPageLayout: React.FC<IMainPageLayoutProps> = (props) => {
     <StyledWrapper>
       <SidebarMenu />
       <StyledContent>
+        <Heading text="Your trips" />
         {children}
       </StyledContent>
       <Infobar text={infobarText} title={infobarTitle} />

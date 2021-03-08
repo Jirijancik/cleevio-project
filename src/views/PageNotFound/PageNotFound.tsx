@@ -22,9 +22,10 @@ export const PageNotFound: React.FC<IButtonProps> = () => {
 
   return (
     <>
-      <MainPageLayout>
+      <MainPageLayout infobarText="infoText" infobarTitle="infoTitle">
         <h1>404 Page not found</h1>
       </MainPageLayout>
+
     </>
   );
 };

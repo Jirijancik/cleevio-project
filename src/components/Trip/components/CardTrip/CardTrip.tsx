@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { IconButton } from 'components/Button/components/IconButton/IconButton';
-import { ButtonState } from 'components/Button/buttonStateEnum';
+import { Button } from 'components/Button';
 import { IconsName } from 'constants/index';
 import { BaseTrip } from 'components/Trip/BaseTrip';
 import { Icon } from 'components/Icon';
@@ -29,26 +28,33 @@ export const CardTrip: React.FC<ICardTripProps> = (props) => {
     company,
     flagName,
     adress,
-    date = new Date().toUTCString(),
+    date = new Date().toDateString(),
   } = props;
 
   return (
     <BaseTrip render={() => (
       <StyledCardWrapper>
-        <Icon iconName={flagName} size={50} />
-        <div>
-          <div>
-            {country}
-            {date}
-          </div>
-          <div>
-            {company}
-            {adress}
-          </div>
+        <div style={{ display: 'flex' }}>
+          <Icon iconName={flagName} size={24} />
+          {country}
         </div>
-        <div style={{ display: 'grid', gridAutoFlow: 'column', gridGap: 20 }}>
-          <IconButton onClick={() => console.log('ArrowLeft')} iconName={IconsName.ArrowLeft} />
-          <IconButton onClick={() => console.log('ArrowLeft')} iconName={IconsName.Delete} state={ButtonState.Delete} />
+        <div>
+          <div>Company</div>
+          <b>{company}</b>
+          <br />
+          {adress}
+        </div>
+        <div>
+          <div>Date</div>
+          {date}
+
+        </div>
+        <div style={{
+          display: 'flex', gap: 22, flexFlow: 'column',
+        }}
+        >
+          <Button onClick={() => console.log('ArrowLeft')} iconName={IconsName.ArrowRight} text="Edit trip" />
+          <Button onClick={() => console.log('ArrowLeft')} iconName={IconsName.Edit} text="View Trip" />
         </div>
       </StyledCardWrapper>
     )}

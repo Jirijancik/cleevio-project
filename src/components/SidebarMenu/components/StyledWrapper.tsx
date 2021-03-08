@@ -8,6 +8,7 @@ export const StyledWrapper = styled.div`
   flex-direction: column;
   background-color: #F9F9FA;
   padding-left: 40px;
+  box-sizing: border-box;    
   &:hover{
    
   }

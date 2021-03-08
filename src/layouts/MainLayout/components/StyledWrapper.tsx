@@ -5,7 +5,7 @@ export const StyledWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 240px 240px 320px;
+  grid-template-columns: 240px calc(100% - 560px) 320px;
   justify-content: space-between;
   flex-direction: row;
   &:hover{

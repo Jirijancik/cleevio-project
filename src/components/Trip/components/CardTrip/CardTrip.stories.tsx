@@ -4,7 +4,7 @@ import { text, select } from '@storybook/addon-knobs';
 import { FlagsName } from 'constants/FlagsEnum';
 import { CardTrip } from './CardTrip';
 
-export const rowTrip = () => {
+export const cardTrip = () => {
   const returnCompany = text('Company', 'Artin');
   const returnCountry = text('Country', 'Germany');
   const returnAdress = text('Adress', 'Ojo street 25');
@@ -26,6 +26,6 @@ export const rowTrip = () => {
 };
 
 export default {
-  title: 'Trip/RowTrip',
+  title: 'Trip/CardTrip',
   component: CardTrip,
 };

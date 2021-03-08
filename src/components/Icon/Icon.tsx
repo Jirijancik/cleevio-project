@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { IconsAndFlagsMap } from '../../constants';
+import { IconsAndFlagsMap } from 'constants/index';
 
 export interface IIconProps {
   readonly iconName?: string;

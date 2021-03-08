@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Icon } from 'components/Icon';
 import { ButtonState } from '../../buttonStateEnum';
 import { IButtonProps, Button } from '../../Button';
-import { Icon } from '../../../Icon';
 
 export interface IIconButtonProps extends Omit<IButtonProps, 'text' | 'isLoading'> {
   readonly iconName: string;
@@ -32,6 +32,7 @@ export const IconButton: React.FC<IIconButtonProps> = (props) => {
         onClick={onClick}
         isDisabled={isDisabled}
         state={state}
+        width={48}
       >
         <Icon iconName={iconName} size={size} />
       </Button>
