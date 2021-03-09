@@ -1,0 +1,17 @@
+
+.react-datepicker__header {
+    border-radius: 0;
+    background-color: #FFFFFF;
+}
+
+.react-datepicker__triangle {
+    display: none;
+}
+
+.react-datepicker-popper[data-placement^="bottom"]{
+    margin-top: -2px;
+}
+
+.react-datepicker, .react-datepicker__month-container{
+    width: 460px;
+}

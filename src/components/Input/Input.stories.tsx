@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { text } from '@storybook/addon-knobs';
 import { Input } from './Input';
 
 export const input = () => {
-  const returnInputValue = text('Input Value', '');
   const returnInputLabel = text('Input Label', 'Label');
   const returnInputPlaceholder = text('Input Placeholder', 'Placeholder');
   // const returnIsDisabled = boolean('Button is diasbled', false);
@@ -11,13 +10,14 @@ export const input = () => {
   // const returnButtonState = select('Button state', Object.values(
   // ButtonState), ButtonState.Primary);
   console.log('ahoj');
-
+  const [value, setValue] = useState('');
   return (
     <>
       <Input
         label={returnInputLabel}
         placeholder={returnInputPlaceholder}
-        value={returnInputValue}
+        value={value}
+        onChange={setValue}
         name="Test Input"
       />
     </>

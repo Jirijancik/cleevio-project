@@ -8,7 +8,7 @@ import { RadioGroupContext } from '../../radioGroupContext';
 
 export interface IRadioButtonProps {
   readonly text?: string;
-  // readonly onClick: (event: MouseEvent<HTMLButtonElement>) => void;
+  // readonly onClick: (event: MouseEvent) => void;
   readonly isDisabled?: boolean;
   readonly isLoading?: boolean;
   readonly children?: React.ReactNode;
@@ -37,7 +37,10 @@ export const RadioButton: React.FC<IRadioButtonProps> = (props) => {
 
   return (
     <Paper>
-      <label style={{ display: 'block', color: 'black' }}>
+      <label style={{
+        display: 'block', color: 'black', padding: 12, paddingRight: 20, cursor: 'pointer',
+      }}
+      >
         <input {...inputProps} ref={ref} />
         {children}
       </label>
