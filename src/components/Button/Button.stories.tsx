@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { text, select, boolean } from '@storybook/addon-knobs';
 import { Button } from './Button';
@@ -12,7 +13,7 @@ export const button = () => {
     <>
       <Button
         text={returnSignleSelectCaption}
-        onClick={(e) => console.log('eee', e)}
+        onClick={(e) => console.log('BUtton Was Clicked', e)}
         isDisabled={returnIsDisabled}
         isLoading={returnIsLoading}
         state={returnButtonState}
@@ -22,6 +23,6 @@ export const button = () => {
 };
 
 export default {
-  title: 'Button/BaseButton',
+  title: `Button/${Button.displayName}`,
   component: Button,
 };

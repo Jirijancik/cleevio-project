@@ -6,10 +6,6 @@ import { RadioButton } from './components/RadioButton/RadioButton';
 export const radioGroup = () => {
   const returnRadioGroupLabel = text('Radio Group label', 'This is a label');
   const returnRadioButtonText = text('Radio Button text', 'Random text');
-  // const returnIsLoading = boolean('Button is loading', false);
-  // const returnButtonState = select('Button state',
-  // Object.values(ButtonState), ButtonState.Primary);
-  console.log('e');
   return (
     <>
       <RadioGroup label={returnRadioGroupLabel}>
@@ -21,6 +17,6 @@ export const radioGroup = () => {
 };
 
 export default {
-  title: 'RadioGroup/RadioGroup',
+  title: `RadioGroup/${RadioGroup.displayName}`,
   component: RadioGroup,
 };

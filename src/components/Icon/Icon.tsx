@@ -14,27 +14,19 @@ const propTypes = {
 
 export const Icon: React.FC<IIconProps> = (props) => {
   const {
-    iconName,
+    iconName = 'flag-slovakia',
     size,
   } = props;
 
-  console.log();
-
-  const SvgIcon = IconsAndFlagsMap.has(iconName) ? IconsAndFlagsMap.get(iconName) : <div>Neni</div>;
-
-  // eslint-disable-next-line quotes
+  const SvgIcon = (iconName && IconsAndFlagsMap.has(iconName))
+    ? IconsAndFlagsMap.get(iconName) : <div>X</div>;
 
   return (
-    <>
-      <div style={{ fontSize: size }}>
-
-        <SvgIcon />
-      </div>
-    </>
+    <div style={{ fontSize: size }}>
+      <SvgIcon />
+    </div>
   );
 };
 
 Icon.displayName = 'Icon';
 Icon.propTypes = propTypes;
-
-//

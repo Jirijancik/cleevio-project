@@ -8,6 +8,3 @@ export const StyledContent = styled.div`
     gap: 12px;
     overflow-x:auto;
 `;
-
-//   top: ${props => px(getBadgeSpacing(props.buttonSize, props.withValue))};
-//   right: ${props => px(getBadgeSpacing(props.buttonSize, props.withValue))};

@@ -8,12 +8,7 @@ export const StyledWrapper = styled.div`
   flex-direction: column;
   border-left: 1px solid #F1F1F2;
   overflow:auto;
-  
-  &:hover{
-   
-  }
-
+  padding-left: 40px;
+  padding-right: 40px;
+  box-sizing: border-box; 
 `;
-
-//   top: ${props => px(getBadgeSpacing(props.buttonSize, props.withValue))};
-//   right: ${props => px(getBadgeSpacing(props.buttonSize, props.withValue))};

@@ -1,45 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Heading } from 'components/Heading';
+import { useHistory } from 'react-router-dom';
+import { Footer } from 'components/Footer';
+import { useViewport } from 'utils/useVieport';
+import { IconButton } from 'components/Button';
+import { IconsName } from 'constants/index';
 import { StyledWrapper } from './components/StyledWrapper';
 import { StyledContent } from './components/StyledContent';
 import { Infobar } from '../../components/Infobar/Infobar';
 import { SidebarMenu } from '../../components/SidebarMenu/SidebarMenu';
+import { StyledContentMobile } from './components/StyledContentMobile';
 
 export interface IMainPageLayoutProps {
-   readonly infobarText?: string;
-   readonly infobarTitle?: string;
-  // readonly onClick: (event: MouseEvent<HTMLButtonElement>) => void;
-  // readonly isDisabled?: boolean;
-  // readonly isLoading?: boolean;
-  // readonly state?: ButtonState;
   readonly children: React.ReactNode
+  readonly footerContent?: React.ReactNode;
+  readonly hedingTitle?: string;
+  readonly infobarContent?: React.ReactNode;
+  readonly infobarTitle?: string;
 }
 
 const propTypes = {
-  infobarText: PropTypes.string,
-  infobarTitle: PropTypes.string,
-  // onClick: PropTypes.func.isRequired,
-  // isDisabled: PropTypes.bool,
-  // isLoading: PropTypes.bool,
-  // state: PropTypes.oneOf(Object.values(ButtonState)),
   children: PropTypes.node,
+  footerContent: PropTypes.node,
+  hedingTitle: PropTypes.string,
+  infobarContent: PropTypes.node,
+  infobarTitle: PropTypes.string,
 };
 
 export const MainPageLayout: React.FC<IMainPageLayoutProps> = (props) => {
-  const { children, infobarText, infobarTitle } = props;
+  const {
+    children,
+    infobarContent,
+    infobarTitle,
+    hedingTitle,
+    footerContent,
+  } = props;
+  const history = useHistory();
+  const [menuIsVisible, setMenuIsVisible] = useState(false);
+  const { width } = useViewport();
+  const breakpoint = 1050;
+
+  console.log(menuIsVisible, setMenuIsVisible);
 
   return (
-    <StyledWrapper>
-      <SidebarMenu />
-      <StyledContent>
-        <Heading text="Your trips" />
-        {children}
-      </StyledContent>
-      <Infobar text={infobarText} title={infobarTitle} />
-    </StyledWrapper>
+    width > breakpoint
+      ? (
+        <StyledWrapper>
+          <SidebarMenu handleClose={() => null} onClick={() => history.push('/new-trip')} />
+          <StyledContent>
+            <Heading text={hedingTitle} />
+            {children}
+            {!!footerContent && (
+            <Footer>
+              {footerContent}
+            </Footer>
+            )}
+          </StyledContent>
+          <Infobar title={infobarTitle}>{infobarContent}</Infobar>
+        </StyledWrapper>
+      )
+      : (
+        <>
+          {menuIsVisible && <SidebarMenu isMobile handleClose={() => setMenuIsVisible(false)} onClick={() => history.push('/new-trip')} />}
+          <StyledContentMobile>
+            <Heading text={hedingTitle}>
+              <IconButton onClick={() => setMenuIsVisible(true)} iconName={IconsName.Star} />
+            </Heading>
+            {children}
+            {!!footerContent && (
+            <Footer>
+              {footerContent}
+            </Footer>
+            )}
+          </StyledContentMobile>
+        </>
+      )
   );
 };
 
-MainPageLayout.displayName = 'SidebarMenu';
+MainPageLayout.displayName = 'MainLayout';
 MainPageLayout.propTypes = propTypes;

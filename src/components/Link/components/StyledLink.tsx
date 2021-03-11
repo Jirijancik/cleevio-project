@@ -1,15 +1,37 @@
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
+import styled, { css } from 'styled-components';
+import {
+  NavLink,
+  NavLinkProps,
+} from 'react-router-dom';
 
-export const StyledLink = styled(NavLink)`
-  /* border: none;
-  font-style: normal; */
+interface IStyledNavLink extends NavLinkProps{
+  readonly disabled: boolean
+}
+
+export const StyledLinkx = styled(NavLink)`
   width: fit-content;
   font-weight: 600;
   font-size: 16px;
-  color: #1C252B;
+  color: ${(props) => props.theme.color};
   text-decoration: none;
+    
+  &[disabled] {
+    pointer-events: none;
+  }
 `;
 
-//   top: ${props => px(getBadgeSpacing(props.buttonSize, props.withValue))};
-//   right: ${props => px(getBadgeSpacing(props.buttonSize, props.withValue))};
+const linkStyle = css`
+  width: fit-content;
+  font-weight: 600;
+  font-size: 16px;
+  color: ${(props) => props.theme.color};
+  text-decoration: none;
+
+  &[disabled] {
+    pointer-events: none;
+    cursor: no-drop;
+  }
+`;
+
+export const StyledLink = styled(NavLink)`${linkStyle};` as React.FC<IStyledNavLink>;

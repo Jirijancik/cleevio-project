@@ -13,6 +13,6 @@ export const button = () => {
 };
 
 export default {
-  title: 'Icon/Icon',
+  title: `Icon/${Icon.displayName}`,
   component: Icon,
 };

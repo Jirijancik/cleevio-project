@@ -1,8 +1,3 @@
-export enum InputState {
-    Disabled = 'Disabled',
-    Invalid = 'Invalid',
-}
-
 export enum InputType {
     Text='text',
     Search = 'search',

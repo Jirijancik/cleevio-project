@@ -3,48 +3,41 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useRadio } from '@react-aria/radio';
 import { RadioGroupState } from '@react-stately/radio';
-import { Paper } from 'components/Paper';
 import { RadioGroupContext } from '../../radioGroupContext';
+import { StyledLabel } from './components/StyledLabel';
 
 export interface IRadioButtonProps {
-  readonly text?: string;
-  // readonly onClick: (event: MouseEvent) => void;
+  readonly children?: React.ReactNode;
   readonly isDisabled?: boolean;
   readonly isLoading?: boolean;
-  readonly children?: React.ReactNode;
-  readonly width?: number;
   readonly label?: string;
+  readonly text?: string;
   readonly value: string;
+  readonly width?: number;
 }
 
 const propTypes = {
-  text: PropTypes.string,
-  // onClick: PropTypes.func.isRequired,
+  children: PropTypes.node,
   isDisabled: PropTypes.bool,
   isLoading: PropTypes.bool,
-  children: PropTypes.node,
-  // state: PropTypes.oneOf(Object.values(ButtonState)),
-  width: PropTypes.number,
   label: PropTypes.string,
+  text: PropTypes.string,
   value: PropTypes.string.isRequired,
+  width: PropTypes.number,
 };
 
 export const RadioButton: React.FC<IRadioButtonProps> = (props) => {
   const { children } = props;
+
   const radioGroupState = React.useContext(RadioGroupContext) as RadioGroupState;
   const ref = React.useRef(null);
   const { inputProps } = useRadio(props, radioGroupState, ref);
 
   return (
-    <Paper>
-      <label style={{
-        display: 'block', color: 'black', padding: 12, paddingRight: 20, cursor: 'pointer',
-      }}
-      >
-        <input {...inputProps} ref={ref} />
-        {children}
-      </label>
-    </Paper>
+    <StyledLabel>
+      <input {...inputProps} ref={ref} />
+      {children}
+    </StyledLabel>
   );
 };
 

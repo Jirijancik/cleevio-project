@@ -1,7 +1,5 @@
 import React from 'react';
 import { Item } from '@react-stately/collections';
-import { Icon } from 'components/Icon';
-import { FlagsName } from 'constants/FlagsEnum';
 import { Select } from './SingleSelect';
 
 export const select = () => {
@@ -13,11 +11,7 @@ export const select = () => {
   // Object.values(ButtonState), ButtonState.Primary);
   return (
     <>
-      <Select label="Favorite Color">
-        <Item>
-          <Icon iconName={FlagsName.Czechia} />
-          AHoj
-        </Item>
+      <Select label="Favorite Color" placeholder="yo">
         <Item>Orange</Item>
         <Item>Yellow</Item>
         <Item>Green</Item>

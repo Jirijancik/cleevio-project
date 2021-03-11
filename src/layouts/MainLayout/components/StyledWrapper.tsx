@@ -8,11 +8,4 @@ export const StyledWrapper = styled.div`
   grid-template-columns: 240px calc(100% - 560px) 320px;
   justify-content: space-between;
   flex-direction: row;
-  &:hover{
-   
-  }
-
 `;
-
-//   top: ${props => px(getBadgeSpacing(props.buttonSize, props.withValue))};
-//   right: ${props => px(getBadgeSpacing(props.buttonSize, props.withValue))};

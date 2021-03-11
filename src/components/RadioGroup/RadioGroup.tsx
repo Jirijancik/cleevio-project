@@ -5,29 +5,25 @@ import { useRadioGroupState } from '@react-stately/radio';
 import { RadioGroupContext } from './radioGroupContext';
 
 export interface IRadioGroupProps {
-  readonly text?: string;
-  // readonly onClick: (event: MouseEvent<HTMLButtonElement>) => void;
+  readonly children?: React.ReactNode;
   readonly isDisabled?: boolean;
   readonly isLoading?: boolean;
-  readonly children?: React.ReactNode;
-  readonly width?: number;
+  readonly text?: string;
   readonly label?: string;
+  readonly width?: number;
 }
 
 const propTypes = {
-  text: PropTypes.string,
-  // onClick: PropTypes.func.isRequired,
+  children: PropTypes.node,
   isDisabled: PropTypes.bool,
   isLoading: PropTypes.bool,
-  children: PropTypes.node,
-  // state: PropTypes.oneOf(Object.values(ButtonState)),
-  width: PropTypes.number,
+  text: PropTypes.string,
   label: PropTypes.string,
+  width: PropTypes.number,
 };
 
 export const RadioGroup: React.FC<IRadioGroupProps> = (props) => {
   const {
-    // state = ButtonState.Default,
     children,
     label,
   } = props;
@@ -45,7 +41,6 @@ export const RadioGroup: React.FC<IRadioGroupProps> = (props) => {
 
       </div>
       <div style={{ display: 'flex', gap: 10 }}>
-
         <RadioGroupContext.Provider value={state}>{children}</RadioGroupContext.Provider>
       </div>
     </div>

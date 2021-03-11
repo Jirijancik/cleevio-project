@@ -1,20 +1,17 @@
 import React from 'react';
+import { text } from '@storybook/addon-knobs';
+import { Heading } from './Heading';
 
-export const button = () => {
-  // const returnSignleSelectCaption = text('Single Select Caption', 'Caption');
-  // const returnIsDisabled = boolean('Button is diasbled', false);
-  // const returnIsLoading = boolean('Button is loading', false);
-  // const returnButtonState = select('Button state',
-  // Object.values(ButtonState), ButtonState.Primary);
-  console.log('ee');
+export const heading = () => {
+  const returnHeadingText = text('Heading text', 'Title');
   return (
     <>
-      as
+      <Heading text={returnHeadingText} />
     </>
   );
 };
 
-// export default {
-//   title: 'Button/BaseButton',
-//   component: Button,
-// };
+export default {
+  title: `Heading/${Heading.displayName}`,
+  component: Heading,
+};

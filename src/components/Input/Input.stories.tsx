@@ -5,11 +5,6 @@ import { Input } from './Input';
 export const input = () => {
   const returnInputLabel = text('Input Label', 'Label');
   const returnInputPlaceholder = text('Input Placeholder', 'Placeholder');
-  // const returnIsDisabled = boolean('Button is diasbled', false);
-  // const returnIsLoading = boolean('Button is loading', false);
-  // const returnButtonState = select('Button state', Object.values(
-  // ButtonState), ButtonState.Primary);
-  console.log('ahoj');
   const [value, setValue] = useState('');
   return (
     <>
@@ -25,6 +20,6 @@ export const input = () => {
 };
 
 export default {
-  title: 'Input/Input',
+  title: `Input/${Input.displayName}`,
   component: Input,
 };

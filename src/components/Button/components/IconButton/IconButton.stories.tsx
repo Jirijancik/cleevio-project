@@ -3,9 +3,8 @@ import { select } from '@storybook/addon-knobs';
 import { IconButton } from './IconButton';
 import { IconsName } from '../../../../constants/IconsEnum';
 
-export const button = () => {
+export const iconButton = () => {
   const returnIconName = select('Icon Name', IconsName, IconsName.Add);
-  console.log('aa');
   return (
     <>
       <IconButton iconName={returnIconName} onClick={() => null} />
@@ -14,6 +13,6 @@ export const button = () => {
 };
 
 export default {
-  title: 'Button/IconButton',
+  title: `Button/${IconButton.displayName}`,
   component: IconButton,
 };

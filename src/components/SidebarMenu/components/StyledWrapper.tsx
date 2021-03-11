@@ -8,12 +8,15 @@ export const StyledWrapper = styled.div`
   flex-direction: column;
   background-color: #F9F9FA;
   padding-left: 40px;
-  box-sizing: border-box;    
-  &:hover{
-   
+  box-sizing: border-box;  
+
+  @media only screen and (max-width: 1050px) {
+  & {
+    position: absolute;
+    min-width: 100vw;
+    height: 100vh;
+    align-items: center;
+    z-index: 9999999999;
   }
-
+}
 `;
-
-//   top: ${props => px(getBadgeSpacing(props.buttonSize, props.withValue))};
-//   right: ${props => px(getBadgeSpacing(props.buttonSize, props.withValue))};

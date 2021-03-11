@@ -10,34 +10,31 @@ export interface IIconButtonProps extends Omit<IButtonProps, 'text' | 'isLoading
 }
 
 const propTypes = {
-  onClick: PropTypes.func.isRequired,
-  isDisabled: PropTypes.bool,
-  state: PropTypes.oneOf(Object.values(ButtonState)),
   iconName: PropTypes.string.isRequired,
+  isDisabled: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
   size: PropTypes.number,
+  state: PropTypes.oneOf(Object.values(ButtonState)),
 };
 
 export const IconButton: React.FC<IIconButtonProps> = (props) => {
   const {
-    onClick,
-    isDisabled,
-    state,
     iconName,
+    isDisabled,
+    onClick,
     size = 16,
+    state,
   } = props;
 
   return (
-    <div>
-      <Button
-        onClick={onClick}
-        isDisabled={isDisabled}
-        state={state}
-        width={48}
-      >
-        <Icon iconName={iconName} size={size} />
-      </Button>
-    </div>
-
+    <Button
+      onClick={onClick}
+      isDisabled={isDisabled}
+      state={state}
+      width={48}
+    >
+      <Icon iconName={iconName} size={size} />
+    </Button>
   );
 };
 

@@ -38,8 +38,8 @@ display: block;
 }
 body, #root, .App {
 line-height: 1.15;
-height:100vh; /**DELETE */
-min-width: 450px;
+height:100vh;
+min-width: 375px;
 }
 ol, ul {
 list-style: none;

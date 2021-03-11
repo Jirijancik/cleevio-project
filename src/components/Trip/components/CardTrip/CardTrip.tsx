@@ -4,58 +4,56 @@ import { Button } from 'components/Button';
 import { IconsName } from 'constants/index';
 import { BaseTrip } from 'components/Trip/BaseTrip';
 import { Icon } from 'components/Icon';
+import { Stack } from 'layouts/wrappers/Stack';
 import { StyledCardWrapper } from './components/StyledCardWrapper';
+import { StyledInnerHeader } from './components/StyledInnerHeader';
+import { StyledCountryHeader } from '../StyledCountryHeader';
 
 export interface ICardTripProps {
-   readonly country?: string;
-   readonly flagName?: string;
-   readonly adress?: string;
-   readonly company?: string;
-   readonly date?: Date;
+  readonly adress?: string;
+  readonly company?: string;
+  readonly country?: string;
+  readonly date?: Date;
+  readonly flagName?: string;
 }
 
 const propTypes = {
-  country: PropTypes.string,
-  flagName: PropTypes.string,
   adress: PropTypes.string,
   company: PropTypes.string,
+  country: PropTypes.string,
   date: PropTypes.instanceOf(Date),
+  flagName: PropTypes.string,
 };
 
 export const CardTrip: React.FC<ICardTripProps> = (props) => {
   const {
-    country,
-    company,
-    flagName,
     adress,
+    company,
+    country,
     date = new Date().toDateString(),
+    flagName,
   } = props;
 
   return (
     <BaseTrip render={() => (
       <StyledCardWrapper>
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           <Icon iconName={flagName} size={24} />
-          {country}
+          <StyledCountryHeader>{country}</StyledCountryHeader>
         </div>
-        <div>
-          <div>Company</div>
+        <Stack spacing={0}>
+          <StyledInnerHeader>Company</StyledInnerHeader>
           <b>{company}</b>
-          <br />
           {adress}
-        </div>
+        </Stack>
         <div>
-          <div>Date</div>
+          <StyledInnerHeader>Date</StyledInnerHeader>
           {date}
-
         </div>
-        <div style={{
-          display: 'flex', gap: 22, flexFlow: 'column',
-        }}
-        >
-          <Button onClick={() => console.log('ArrowLeft')} iconName={IconsName.ArrowRight} text="Edit trip" />
-          <Button onClick={() => console.log('ArrowLeft')} iconName={IconsName.Edit} text="View Trip" />
-        </div>
+        <Stack spacing={22}>
+          <Button isDisabled onClick={() => null} iconName={IconsName.Edit} text="Edit Trip" />
+          <Button onClick={() => null} iconName={IconsName.ArrowRight} text="View trip" />
+        </Stack>
       </StyledCardWrapper>
     )}
     />

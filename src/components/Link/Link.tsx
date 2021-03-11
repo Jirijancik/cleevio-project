@@ -1,33 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { ThemeProvider } from 'styled-components';
 import { StyledLink } from './components/StyledLink';
 import { LinkState } from './linkStateEnum';
-import { getButtonColor } from './utils/getButtonCollor';
+import { getLinkCollor } from './utils/getLinkCollor';
 
-export interface IButtonProps {
-  readonly text: string;
+export interface ILinkProps {
   readonly linkPath: string;
   readonly state?: LinkState;
+  readonly text: string;
 }
 
 const propTypes = {
-  text: PropTypes.string.isRequired,
   linkPath: PropTypes.string.isRequired,
   state: PropTypes.oneOf(Object.values(LinkState)),
+  text: PropTypes.string.isRequired,
 };
 
-export const Link: React.FC<IButtonProps> = (props) => {
+export const Link: React.FC<ILinkProps> = (props) => {
   const {
-    text,
     linkPath,
     state = LinkState.Default,
+    text,
   } = props;
 
   return (
-    <ThemeProvider theme={() => getButtonColor(state)}>
-      <StyledLink exact to={linkPath}>{text}</StyledLink>
+    <ThemeProvider theme={() => getLinkCollor(state)}>
+      <StyledLink disabled={state === LinkState.Disabled} exact to={linkPath}>{text}</StyledLink>
     </ThemeProvider>
   );
 };

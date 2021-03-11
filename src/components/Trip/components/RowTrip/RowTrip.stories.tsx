@@ -1,18 +1,14 @@
 import React from 'react';
 // import { text, select, boolean } from '@storybook/addon-knobs';
 import { text, select } from '@storybook/addon-knobs';
+import { FlagsName } from 'constants/FlagsEnum';
 import { RowTrip } from './RowTrip';
-import { FlagsName } from '../../../../constants/FlagsEnum';
 
 export const rowTrip = () => {
   const returnCompany = text('Company', 'Artin');
   const returnCountry = text('Country', 'Germany');
   const returnAdress = text('Adress', 'Ojo street 25');
   const returnIconName = select('Icon Name', FlagsName, FlagsName.Czechia);
-  // const returnIsLoading = boolean('Button is loading', false);
-  // const returnButtonState = select('Button state',
-  // Object.values(ButtonState), ButtonState.Primary);
-  console.log('koko');
   return (
     <>
       <RowTrip
@@ -26,6 +22,6 @@ export const rowTrip = () => {
 };
 
 export default {
-  title: 'Trip/RowTrip',
+  title: `Trip/${RowTrip.displayName}`,
   component: RowTrip,
 };

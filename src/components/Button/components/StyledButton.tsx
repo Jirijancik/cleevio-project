@@ -9,7 +9,6 @@ interface IStyledButtonProps {
 }
 
 export const StyledButton = styled.button<IStyledButtonProps>`
-
   height: 48px;
   width: ${({ width }) => `${width}px`};
   border-radius: 10px;
@@ -26,8 +25,4 @@ export const StyledButton = styled.button<IStyledButtonProps>`
   &:hover{
     background-color: ${(props) => ((props.isDisabled || props.isLoading) ? 'auto' : props.theme.hoverBackgroundColor)};
   }
-
 `;
-
-//   top: ${props => px(getBadgeSpacing(props.buttonSize, props.withValue))};
-//   right: ${props => px(getBadgeSpacing(props.buttonSize, props.withValue))};

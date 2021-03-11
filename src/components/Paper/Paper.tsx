@@ -7,7 +7,7 @@ interface IStyledPaperProps extends Pick<IPaperProps, 'spacing'> {
 }
 
 const StyledPaper = styled.div<IStyledPaperProps>`
-  padding: ${({ spacing }) => spacing ?? 0};
+  padding: ${({ spacing }) => `${spacing}px` ?? 0};
   background-color: #F9F9FA;
   border-radius: 10px;
   width: fit-content;

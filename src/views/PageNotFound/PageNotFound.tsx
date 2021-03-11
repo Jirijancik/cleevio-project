@@ -1,34 +1,26 @@
+import { Button, ButtonState } from 'components/Button';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { MainPageLayout } from '../../layouts/MainLayout/MainLayout';
 
-export interface IButtonProps {
-  // readonly text?: string;
-  // readonly onClick: (event: MouseEvent<HTMLButtonElement>) => void;
-  // readonly isDisabled?: boolean;
-  // readonly isLoading?: boolean;
-  // readonly state?: ButtonState;
-}
-
-const propTypes = {
-  // text: PropTypes.string,
-  // onClick: PropTypes.func.isRequired,
-  // isDisabled: PropTypes.bool,
-  // isLoading: PropTypes.bool,
-  // state: PropTypes.oneOf(Object.values(ButtonState)),
-};
-
-export const PageNotFound: React.FC<IButtonProps> = () => {
-  console.log('ahoj');
+export const PageNotFound: React.FC = () => {
+  const history = useHistory();
 
   return (
     <>
-      <MainPageLayout infobarText="infoText" infobarTitle="infoTitle">
-        <h1>404 Page not found</h1>
+      <MainPageLayout infobarContent="Sometimes trips can make you lost. Please go back." infobarTitle="Whoops">
+        <h1>404: Page not found 😭</h1>
+        <p style={{ maxWidth: 450, padding: 20 }}>
+          Well this is unexpected, something went wrong or you got lost.
+          <br />
+          Please go back and mabye try it later.
+          If your problem presists, please feel free to contact us, so we can help you ASAP :)
+        </p>
+        <Button onClick={() => history.goBack()} state={ButtonState.Primary}>Go back</Button>
       </MainPageLayout>
 
     </>
   );
 };
 
-PageNotFound.displayName = 'SidebarMenu';
-PageNotFound.propTypes = propTypes;
+PageNotFound.displayName = 'PageNotFound';
