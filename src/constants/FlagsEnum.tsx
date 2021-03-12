@@ -1,3 +1,5 @@
+/* eslint-disable comma-spacing */
+import React from 'react';
 import SvgAustria from '../assets/icons/Flags/Austria';
 import SvgChina from '../assets/icons/Flags/China';
 import SvgCzechia from '../assets/icons/Flags/Czechia';
@@ -12,6 +14,11 @@ import SvgSpain from '../assets/icons/Flags/Spain';
 import SvgSweden from '../assets/icons/Flags/Sweden';
 import SvgUnitedKingdom from '../assets/icons/Flags/UnitedKingdom';
 import SvgUnitedStates from '../assets/icons/Flags/UnitedStates';
+
+declare namespace JSX {
+    interface Element {
+    }
+}
 
 export enum FlagsName {
     Austria = 'flag-austria',
@@ -30,7 +37,7 @@ export enum FlagsName {
     UnitedStates = 'flag-united-states',
 }
 
-export const FlagsMap = new Map();
+export const FlagsMap = new Map<FlagsName,(props: React.SVGProps<SVGSVGElement>) => JSX.Element>();
 FlagsMap.set(FlagsName.Austria, SvgAustria);
 FlagsMap.set(FlagsName.China, SvgChina);
 FlagsMap.set(FlagsName.Czechia, SvgCzechia);

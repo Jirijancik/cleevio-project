@@ -38,8 +38,6 @@ export const NewTrip: React.FC = () => {
     </Item>
   ));
 
-  console.log(formRef);
-
   useEffect(() => {
     const AddedTripsList = !newLocalTrips.length
       ? <p>No trips to show</p>

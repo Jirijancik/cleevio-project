@@ -13,7 +13,7 @@ export const button = () => {
     <>
       <Button
         text={returnSignleSelectCaption}
-        onClick={(e) => console.log('BUtton Was Clicked', e)}
+        onClick={(e) => console.log('Button Was Clicked', e)}
         isDisabled={returnIsDisabled}
         isLoading={returnIsLoading}
         state={returnButtonState}

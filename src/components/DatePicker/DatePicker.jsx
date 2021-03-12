@@ -7,7 +7,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment';
 // import { StyledInput } from 'components/Input/components/StyledInput';
-import { Input } from 'components/Input';
+import { Input, InputType } from 'components/Input';
 import './Style/DatePicker.css';
 
 const momentDateFormat = 'MM/DD/YYYY';
@@ -18,7 +18,7 @@ class CustomCalendarComponent extends React.Component {
         onClick={this.props.onClick}
         value={this.props.ipDate}
         onChange={(e) => this.props.handleIpChange(e.target.value)}
-        type="input"
+        type={InputType.Text}
         label={this.props.label}
         name={this.props.name}
       />
@@ -64,6 +64,7 @@ export class CustomDatePicker extends Component {
           showMonthDropdown
           showYearDropdown
           dropdownMode="select"
+          name={this.props.name}
         />
 
       </>

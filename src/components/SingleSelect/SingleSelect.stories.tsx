@@ -1,17 +1,14 @@
 import React from 'react';
 import { Item } from '@react-stately/collections';
+import { text } from '@storybook/addon-knobs';
 import { Select } from './SingleSelect';
 
 export const select = () => {
-  // const returnSignleSelectCaption = text('Single Select Caption', 'Caption');¨
-  console.log('e');
-  // const returnIsDisabled = boolean('Button is diasbled', false);
-  // const returnIsLoading = boolean('Button is loading', false);
-  // const returnButtonState = select('Button state',
-  // Object.values(ButtonState), ButtonState.Primary);
+  const returnSignleSelectPlaceholder = text('Single Select placeholder', 'I am a placeholder');
+  const returnSignleSelectLabel = text('Single Select label', 'I am a label');
   return (
     <>
-      <Select label="Favorite Color" placeholder="yo">
+      <Select label={returnSignleSelectLabel} placeholder={returnSignleSelectPlaceholder}>
         <Item>Orange</Item>
         <Item>Yellow</Item>
         <Item>Green</Item>

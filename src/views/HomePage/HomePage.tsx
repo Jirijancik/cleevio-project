@@ -1,10 +1,12 @@
-import { CardTrip } from 'components/Trip/components/CardTrip/CardTrip';
 import React, { useEffect, useState } from 'react';
 import { MainPageLayout } from 'layouts/MainLayout/MainLayout';
 import UUID from 'node-uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchData } from 'actions/fetchData';
 import { Stack } from 'layouts/wrappers/Stack';
+import { RowTrip } from 'components/Trip/components/RowTrip/RowTrip';
+import { useViewport } from 'utils/useVieport';
+import { CardTrip } from 'components/Trip/components/CardTrip/CardTrip';
 
 const infoTitle = 'Tips & tricks';
 const firstInfobarParagraphText = 'Company was established back in the year 2007 by 3 friends who were fascinated by the web and mobile technologies and product design. Today, Cleevio is lead by its own CEO, David Bezdeka, and is working on projects for clients and companies around the world. With his work he helps with the product itself, starting startups or understanding how to manage and deliver a large-scale solution. Cleevio‘s people come from a diverse environment, but they work like a well-coordinated team at work. During development, they use new technologies and libraries, always striving to uplevel. They work side-by-side with clients as a partner and they are their digital expert. They advise and influence the design and strategy of the project. They are looking for bold clients who are leaders in their field and have innovative, creative ideas. They are attracted to projects which utilize new technologies.';
@@ -22,6 +24,9 @@ export const HomePage: React.FC = () => {
   const newLocalTrips = useSelector((state:any) => state.addTrip);
   const [localTripsData, setLocalTripsData] = useState<Array<any>>(fetchedTrips.data);
 
+  const { width } = useViewport();
+  const breakpoint = 1450;
+
   useEffect(() => {
     const url = 'https://gist.githubusercontent.com/davidzadrazil/43378abbaa2f1145ef50000eccf81a85/raw/d734d8877c2aa9e1e8c1c59bcb7ec98d7f8d8459/countries.json';
     dispatch(fetchData(url));
@@ -36,14 +41,24 @@ export const HomePage: React.FC = () => {
     <>
       <MainPageLayout infobarContent={infobarContent} infobarTitle={infoTitle} hedingTitle="Your trips">
         {
-          fetchedTrips.isLoading ? 'LOADING...' : !!localTripsData && localTripsData.map((trip:any) => (
-            <CardTrip
-              company={trip.text}
-              country={trip.text}
-              adress={trip.value}
-              flagName={trip.icon}
-              key={UUID.v4()}
-            />
+          fetchedTrips.isLoading ? 'LOADING...' : !!localTripsData && localTripsData.map((trip:any) => ((width > breakpoint)
+            ? (
+              <RowTrip
+                company={trip.text}
+                country={trip.text}
+                adress={trip.value}
+                flagName={trip.icon}
+                key={UUID.v4()}
+              />
+            ) : (
+              <CardTrip
+                company={trip.text}
+                country={trip.text}
+                adress={trip.value}
+                flagName={trip.icon}
+                key={UUID.v4()}
+              />
+            )
           ))
         }
 

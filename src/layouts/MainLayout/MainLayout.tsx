@@ -41,8 +41,6 @@ export const MainPageLayout: React.FC<IMainPageLayoutProps> = (props) => {
   const { width } = useViewport();
   const breakpoint = 1050;
 
-  console.log(menuIsVisible, setMenuIsVisible);
-
   return (
     width > breakpoint
       ? (
