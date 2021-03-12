@@ -1,3 +1,5 @@
+/* eslint-disable comma-spacing */
+import React from 'react';
 import SvgAdd from '../assets/icons/Add';
 import SvgArrowLeft from '../assets/icons/ArrowLeft';
 import SvgArrowRight from '../assets/icons/ArrowRight';
@@ -10,6 +12,11 @@ import SvgFutureSection from '../assets/icons/FutureSection';
 import SvgLoading from '../assets/icons/Loading';
 import SvgStar from '../assets/icons/Star';
 import SvgYourTrips from '../assets/icons/YourTrips';
+
+declare namespace JSX {
+    interface Element {
+    }
+}
 
 export enum IconsName {
     Add = 'icon-add',
@@ -26,7 +33,7 @@ export enum IconsName {
     YourTrips = 'icon-your-trips',
 }
 
-export const IconsMap = new Map();
+const IconsMap = new Map<IconsName,(props: React.SVGProps<SVGSVGElement>) => JSX.Element>();
 IconsMap.set(IconsName.Add, SvgAdd);
 IconsMap.set(IconsName.ArrowLeft, SvgArrowLeft);
 IconsMap.set(IconsName.ArrowRight, SvgArrowRight);
@@ -39,3 +46,4 @@ IconsMap.set(IconsName.FutureSection, SvgFutureSection);
 IconsMap.set(IconsName.Loading, SvgLoading);
 IconsMap.set(IconsName.Star, SvgStar);
 IconsMap.set(IconsName.YourTrips, SvgYourTrips);
+export default IconsMap;

@@ -1,28 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { IconsAndFlagsMap } from 'constants/index';
+import { FlagsName, IconsAndFlagsMap, IconsName } from 'constants/index';
 
 export interface IIconProps {
-  readonly iconName?: string;
+  readonly iconName?: IconsName | FlagsName;
   readonly size?: number;
 }
 
 const propTypes = {
-  iconName: PropTypes.string,
+  iconName: PropTypes.oneOf([...IconsAndFlagsMap.keys()]),
   size: PropTypes.number,
 };
 
 export const Icon: React.FC<IIconProps> = (props) => {
   const {
-    iconName = 'flag-slovakia',
+    iconName = FlagsName.Czechia,
     size,
   } = props;
 
-  const SvgIcon = (iconName && IconsAndFlagsMap.has(iconName))
-    ? IconsAndFlagsMap.get(iconName) : <div>X</div>;
+  const SvgIcon = ((iconName && IconsAndFlagsMap.has(iconName))
+    ? IconsAndFlagsMap.get(iconName) : <div>X</div>) as React.ElementType;
 
   return (
-    <div style={{ fontSize: size }}>
+    <div style={{ fontSize: size, display: 'grid' }}>
       <SvgIcon />
     </div>
   );

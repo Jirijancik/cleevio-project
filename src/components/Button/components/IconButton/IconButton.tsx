@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+import { FlagsName, IconsName, IconsAndFlagsMap } from 'constants/index';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'components/Icon';
@@ -5,12 +7,12 @@ import { ButtonState } from '../../buttonStateEnum';
 import { IButtonProps, Button } from '../../Button';
 
 export interface IIconButtonProps extends Omit<IButtonProps, 'text' | 'isLoading'> {
-  readonly iconName: string;
+  readonly iconName: IconsName | FlagsName;
   readonly size?: number;
 }
 
 const propTypes = {
-  iconName: PropTypes.string.isRequired,
+  iconName: PropTypes.oneOf([...IconsAndFlagsMap.keys()]).isRequired,
   isDisabled: PropTypes.bool,
   onClick: PropTypes.func.isRequired,
   size: PropTypes.number,

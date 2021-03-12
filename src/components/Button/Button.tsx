@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+import { FlagsName, IconsName, IconsAndFlagsMap } from 'constants/index';
 import React, { MouseEvent } from 'react';
 import PropTypes from 'prop-types';
 import { useButton } from '@react-aria/button';
@@ -13,7 +14,7 @@ export interface IButtonProps {
   readonly form?: string;
   readonly forwardRef?: React.ForwardedRef<HTMLButtonElement>
   readonly children?: React.ReactNode;
-  readonly iconName?: string;
+  readonly iconName?: IconsName | FlagsName;
   readonly isDisabled?: boolean;
   readonly isLoading?: boolean;
   readonly onClick: (event: MouseEvent<HTMLButtonElement>) => void;
@@ -26,7 +27,7 @@ export interface IButtonProps {
 const propTypes = {
   form: PropTypes.string,
   children: PropTypes.node,
-  iconName: PropTypes.string,
+  iconName: PropTypes.oneOf([...IconsAndFlagsMap.keys()]),
   isDisabled: PropTypes.bool,
   isLoading: PropTypes.bool,
   onClick: PropTypes.func.isRequired,

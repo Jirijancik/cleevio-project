@@ -37,7 +37,7 @@ export enum FlagsName {
     UnitedStates = 'flag-united-states',
 }
 
-export const FlagsMap = new Map<FlagsName,(props: React.SVGProps<SVGSVGElement>) => JSX.Element>();
+const FlagsMap = new Map<FlagsName,(props: React.SVGProps<SVGSVGElement>) => JSX.Element>();
 FlagsMap.set(FlagsName.Austria, SvgAustria);
 FlagsMap.set(FlagsName.China, SvgChina);
 FlagsMap.set(FlagsName.Czechia, SvgCzechia);
@@ -52,3 +52,5 @@ FlagsMap.set(FlagsName.Spain, SvgSpain);
 FlagsMap.set(FlagsName.Sweden, SvgSweden);
 FlagsMap.set(FlagsName.UnitedKingdom, SvgUnitedKingdom);
 FlagsMap.set(FlagsName.UnitedStates, SvgUnitedStates);
+
+export default FlagsMap;

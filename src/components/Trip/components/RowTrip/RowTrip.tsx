@@ -1,16 +1,19 @@
 /* eslint-disable no-console */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledRowWrapper } from './components/StyledRowWrapper';
+import { FlagsName, IconsName } from 'constants/index';
+import { IconButton } from 'components/Button/components/IconButton/IconButton';
+import { Icon } from 'components/Icon';
+import { ButtonState } from 'components/Button/buttonStateEnum';
+import { Stack } from 'layouts/wrappers/Stack';
 import { BaseTrip } from '../../BaseTrip';
-import { IconButton } from '../../../Button/components/IconButton/IconButton';
-import { IconsName } from '../../../../constants';
-import { Icon } from '../../../Icon';
-import { ButtonState } from '../../../Button/buttonStateEnum';
+import { StyledRowWrapper } from './components/StyledRowWrapper';
+import { StyledInnerHeader } from './components/StyledInnerHeader';
+import { StyledRowTripItem } from './components/StyledRowTripItem';
 
 export interface IRowTripProps {
    readonly country?: string;
-   readonly flagName?: string;
+   readonly flagName?: FlagsName;
    readonly adress?: string;
    readonly company?: string;
    readonly date?: Date;
@@ -18,7 +21,7 @@ export interface IRowTripProps {
 
 const propTypes = {
   country: PropTypes.string,
-  flagName: PropTypes.string,
+  flagName: PropTypes.oneOf(Object.values(FlagsName)),
   adress: PropTypes.string,
   company: PropTypes.string,
   date: PropTypes.instanceOf(Date),
@@ -37,19 +40,22 @@ export const RowTrip: React.FC<IRowTripProps> = (props) => {
     <BaseTrip render={() => (
       <StyledRowWrapper>
         <Icon iconName={flagName} size={50} />
-        <div>
+        <div style={{ display: 'flex' }}>
           <div>
-            {country}
-            {date}
+            <StyledInnerHeader>{country}</StyledInnerHeader>
+            <StyledRowTripItem>{company}</StyledRowTripItem>
           </div>
-          <div>
-            {company}
-            {adress}
-          </div>
+          <Stack>
+            <div style={{ marginTop: 4 }}>{date}</div>
+            <div>{adress}</div>
+          </Stack>
         </div>
-        <div style={{ display: 'grid', gridAutoFlow: 'column', gridGap: 20 }}>
-          <IconButton onClick={() => console.log('ArrowLeft')} iconName={IconsName.ArrowLeft} />
-          <IconButton onClick={() => console.log('ArrowLeft')} iconName={IconsName.Delete} state={ButtonState.Delete} />
+        <div style={{
+          display: 'grid', gridAutoFlow: 'column', gridGap: 20, marginLeft: 'auto',
+        }}
+        >
+          <IconButton isDisabled onClick={() => console.log('ArrowLeft')} iconName={IconsName.Delete} state={ButtonState.Delete} />
+          <IconButton isDisabled onClick={() => console.log('ArrowLeft')} iconName={IconsName.ArrowLeft} />
         </div>
       </StyledRowWrapper>
     )}

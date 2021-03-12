@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'components/Button';
-import { IconsName } from 'constants/index';
+import { FlagsName, IconsName } from 'constants/index';
 import { BaseTrip } from 'components/Trip/BaseTrip';
 import { Icon } from 'components/Icon';
 import { Stack } from 'layouts/wrappers/Stack';
@@ -14,7 +14,7 @@ export interface ICardTripProps {
   readonly company?: string;
   readonly country?: string;
   readonly date?: Date;
-  readonly flagName?: string;
+  readonly flagName?: FlagsName;
 }
 
 const propTypes = {
@@ -22,7 +22,7 @@ const propTypes = {
   company: PropTypes.string,
   country: PropTypes.string,
   date: PropTypes.instanceOf(Date),
-  flagName: PropTypes.string,
+  flagName: PropTypes.oneOf(Object.values(FlagsName)),
 };
 
 export const CardTrip: React.FC<ICardTripProps> = (props) => {
@@ -52,7 +52,7 @@ export const CardTrip: React.FC<ICardTripProps> = (props) => {
         </div>
         <Stack spacing={22}>
           <Button isDisabled onClick={() => null} iconName={IconsName.Edit} text="Edit Trip" />
-          <Button onClick={() => null} iconName={IconsName.ArrowRight} text="View trip" />
+          <Button isDisabled onClick={() => null} iconName={IconsName.ArrowRight} text="View trip" />
         </Stack>
       </StyledCardWrapper>
     )}
